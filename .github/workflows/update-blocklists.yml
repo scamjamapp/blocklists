@@ -26,6 +26,44 @@ jobs:
       - name: Update Blocklists
         shell: pwsh
         run: |
+
+          $Domains = @()
+
+          $Request = Invoke-WebRequest https://lolrmm.io/api/rmm_tools.json
+          $Data = ConvertFrom-Json $Request
+          foreach ($Item in $Data)
+          {
+              if ($Item.Artifacts.Network.Count -gt 0)
+              {
+                  foreach ($Domain in $Item.Artifacts.Network[0].Domains)
+                  {
+
+                      $Domains += $Domain
+
+                  }
+              } else 
+              {
+                  continue
+              }
+          }
+
+          if (Test-Path ./scamjam-remoteaccess.txt -PathType Any)
+          {
+            Remove-Item ./scamjam-remoteaccess.txt -Force
+          }
+
+          foreach ($Domain in $Domains)
+          {
+              if ($Domain -eq "user_managed")
+              {
+                  continue
+              } else
+              {
+                  Add-Content -Path ./scamjam-remoteaccess.txt -Value $Domain
+              }
+              
+          }
+
           hostlist-compiler -c config.json -o ScamJamCombined.txt
       - uses: ryand56/r2-upload-action@latest # Can be any release
         with:
