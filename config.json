@@ -10,24 +10,9 @@
         "RemoveComments"
       ]
     },
-	{
-      "name": "Cenk NRD",
-      "source": "https://dl.cenk.app/nrd/nrd-last-20-days.txt",
-      "transformations": [
-        "RemoveComments"
-      ]
-    },
     {
       "name": "Hagezi Popup",
       "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/popupads.txt",
-      "type": "adblock",
-      "transformations": [
-        "RemoveComments"
-      ]
-    },
-    {
-      "name": "Hagezi Tif",
-      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.txt",
       "type": "adblock",
       "transformations": [
         "RemoveComments"
