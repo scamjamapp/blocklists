@@ -1,0 +1,61 @@
+{
+  "name": "ScamJamCompressed",
+  "license": "GPLv3",
+  "version": "1.0.0.0",
+  "sources": [
+  {
+      "name": "ScamJam RemoteAccess",
+      "source": "scamjam-remoteaccess.txt",
+      "transformations": [
+        "RemoveComments"
+      ]
+    },
+	{
+      "name": "Cenk NRD",
+      "source": "https://dl.cenk.app/nrd/nrd-last-20-days.txt",
+      "transformations": [
+        "RemoveComments"
+      ]
+    },
+    {
+      "name": "Hagezi Popup",
+      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/popupads.txt",
+      "type": "adblock",
+      "transformations": [
+        "RemoveComments"
+      ]
+    },
+    {
+      "name": "Hagezi Tif",
+      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.txt",
+      "type": "adblock",
+      "transformations": [
+        "RemoveComments"
+      ]
+    },
+    {
+      "name": "Hagezi DynDNS",
+      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/dyndns.txt",
+      "type": "adblock",
+      "transformations": [
+        "RemoveComments"
+      ]
+    },
+    {
+      "name": "Hagezi TLD Block",
+      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/spam-tlds-adblock-aggressive.txt",
+      "type": "adblock",
+      "transformations": [
+        "RemoveComments"
+      ]
+    }
+  ],
+  "transformations": [
+    "Deduplicate",
+    "Compress",
+    "RemoveEmptyLines"
+  ]
+}
+
+
+
