@@ -1,0 +1,41 @@
+# This is a basic workflow to help you get started with Actions
+
+name: update-remoteaccess
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+
+
+    
+jobs:
+  update-blocklists:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+      - name: Update Remote Access Blocklist
+        shell: pwsh
+        run: |
+
+          mkdir Temp
+          cd Temp
+
+          $Request = Invoke-WebRequest https://cdn.jsdelivr.net/gh/PeterDaveHello/nrd-list-downloader@master/nrd-list-downloader.sh
+          /bin/bash DAY_RANGE=14 ./nrd-list-downloader.sh
+
+          cd ../
+
+      - uses: ryand56/r2-upload-action@latest # Can be any release
+        with:
+          r2-account-id: ${{ secrets.R2_ACCOUNT_ID }}
+          r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
+          r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          r2-bucket: ${{ secrets.R2_BUCKET }}
+          source-dir: ./Temp
+          output-file-url: false # defaults to true
+          keep-file-fresh: true # defaults to false
