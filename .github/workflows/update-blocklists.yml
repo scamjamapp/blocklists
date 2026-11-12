@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: update-blocklists
+name: update-remoteaccess
 
 # Controls when the workflow will run
 on:
@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
-      - name: Update Blocklists
+      - name: Update Remote Access Blocklist
         shell: pwsh
         run: |
 
