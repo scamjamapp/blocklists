@@ -19,14 +19,15 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v6
       - name: Update Newly Registered Domains Blocklist
-        shell: pwsh
+        shell: bash
         run: |
+         DAY_RANGE=14
 
           mkdir Temp
           cd Temp
 
-          Invoke-WebRequest https://cdn.jsdelivr.net/gh/PeterDaveHello/nrd-list-downloader@master/nrd-list-downloader.sh -OutFile nrd-list-downloader.sh
-          /bin/bash -c "DAY_RANGE=14 ./nrd-list-downloader.sh"
+          wget https://cdn.jsdelivr.net/gh/PeterDaveHello/nrd-list-downloader@master/nrd-list-downloader.sh
+          ./nrd-list-downloader.sh
 
           cd ../
 
