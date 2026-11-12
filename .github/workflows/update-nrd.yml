@@ -25,7 +25,7 @@ jobs:
           mkdir Temp
           cd Temp
 
-          $Request = Invoke-WebRequest https://cdn.jsdelivr.net/gh/PeterDaveHello/nrd-list-downloader@master/nrd-list-downloader.sh
+          Invoke-WebRequest https://cdn.jsdelivr.net/gh/PeterDaveHello/nrd-list-downloader@master/nrd-list-downloader.sh -OutFile nrd-list-downloader.sh
           /bin/bash -c "DAY_RANGE=14 ./nrd-list-downloader.sh"
 
           cd ../
