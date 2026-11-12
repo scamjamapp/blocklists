@@ -21,16 +21,12 @@ jobs:
       - name: Update Newly Registered Domains Blocklist
         shell: bash
         run: |
-         DAY_RANGE=14
-
-          mkdir Temp
-          cd Temp
 
           wget https://cdn.jsdelivr.net/gh/PeterDaveHello/nrd-list-downloader@master/nrd-list-downloader.sh
           chmod +x nrd-list-downloader.sh
           ./nrd-list-downloader.sh
 
-          cd ../
+          rm nrd-list-downloader.sh
 
       - uses: ryand56/r2-upload-action@latest # Can be any release
         with:
@@ -38,6 +34,6 @@ jobs:
           r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
           r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           r2-bucket: ${{ secrets.R2_BUCKET }}
-          source-dir: ./Temp
+          source-dir: .
           output-file-url: false # defaults to true
           keep-file-fresh: true # defaults to false
