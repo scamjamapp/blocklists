@@ -22,10 +22,14 @@ jobs:
         shell: bash
         run: |
 
+          mkdir lists
+          cd lists
+
           chmod +x nrd-list-downloader.sh
-          ./nrd-list-downloader.sh
+          ../nrd-list-downloader.sh
 
           rm nrd-list-downloader.sh
+          cd ..
 
       - uses: ryand56/r2-upload-action@latest # Can be any release
         with:
@@ -33,6 +37,6 @@ jobs:
           r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
           r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           r2-bucket: ${{ secrets.R2_BUCKET }}
-          source-dir: ./nrd-14days-free.txt
+          source-dir: .lists/nrd-14days-free.txt
           output-file-url: false # defaults to true
           keep-file-fresh: true # defaults to false
