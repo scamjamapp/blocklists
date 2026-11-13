@@ -22,6 +22,21 @@ jobs:
         shell: pwsh
         run: |
 
+          $InvalidLolDomains = @("px-*.getscreen.me",
+          "agents*-cloud.acronis.com",
+          "asapi*.aweray.net",
+          "rescue-list.*.logmein-gateway.com",
+          "auth*.aeroadmin.com",
+          "pdqinstallers.*.r2.cloudflarestorage.com",
+          "plus*.site24x7.com",
+          "plus*.site24x7.eu",
+          "plus*.site24x7.in",
+          "plus*.site24x7.cn",
+          "plus*.site24x7.net.au",
+          "*.-dms.zoho.com.cn",
+          "upload_data.qq.com",
+          "_v2-origintunneld._tcp.argotunnel.com")
+
           $Domains = @()
 
           mkdir lists
@@ -59,9 +74,11 @@ jobs:
               } elseif ($Domain -eq "<operator-configured Vector Discovery Server URL>")
               {
                   continue
+              } elseif ($Domain -in $InvalidLolDomains){
+                continue
               }
 
-              try { #my name is tanka jahari and i would NEVER use exceptions for control flow
+              try { #my name is tanka jahari but i would NEVER use exceptions for control flow
                   [ipaddress]$IP = $Domain
                   continue
               } catch {
