@@ -28,6 +28,8 @@ jobs:
           chmod +x ../nrd-list-downloader.sh
           ../nrd-list-downloader.sh
 
+          mv ../nrd-14days-free.txt .
+
           cd ..
 
       - uses: ryand56/r2-upload-action@latest # Can be any release
