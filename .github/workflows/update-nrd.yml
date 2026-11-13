@@ -22,9 +22,6 @@ jobs:
         shell: bash
         run: |
 
-          "DAY_RANGE=14"
-
-          wget https://cdn.jsdelivr.net/gh/PeterDaveHello/nrd-list-downloader@master/nrd-list-downloader.sh
           chmod +x nrd-list-downloader.sh
           ./nrd-list-downloader.sh
 
