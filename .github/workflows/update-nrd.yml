@@ -25,7 +25,7 @@ jobs:
           mkdir lists
           cd lists
 
-          chmod +x nrd-list-downloader.sh
+          chmod +x ../nrd-list-downloader.sh
           ../nrd-list-downloader.sh
 
           rm nrd-list-downloader.sh
