@@ -56,7 +56,7 @@ jobs:
               if ($Domain -eq "user_managed")
               {
                   continue
-              } else if ($Domain -eq "<operator-configured Vector Discovery Server URL>")
+              } elseif ($Domain -eq "<operator-configured Vector Discovery Server URL>")
               {
                   continue
               }
